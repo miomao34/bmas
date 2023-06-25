@@ -17,7 +17,7 @@ run:
 setup: venv dep
 
 venv:
-	@python3 -m venv ./venv/
+	@python3.11 -m venv ./venv/
 
 dep:
 	@. venv/bin/activate && \
