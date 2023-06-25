@@ -151,6 +151,7 @@ class BMAS:
                 id="BMAS",
                 title=query,
                 audio_url=self.env_vars["IP"]
+                + f":{self.env_vars['PORT']}"
                 + "/render?"
                 + urlencode({"sentence": query}),
             )
