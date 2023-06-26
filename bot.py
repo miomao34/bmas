@@ -146,14 +146,18 @@ class BMAS:
         if not query:
             return
 
+        audio_url = (
+            self.env_vars["IP"]
+            + f":{self.env_vars['PORT']}"
+            + "/render?"
+            + urlencode({"sentence": query})
+        )
+        print(audio_url)
         results = [
             InlineQueryResultAudio(
                 id="BMAS",
                 title=query,
-                audio_url=self.env_vars["IP"]
-                + f":{self.env_vars['PORT']}"
-                + "/render?"
-                + urlencode({"sentence": query}),
+                audio_url=audio_url,
             )
         ]
 
