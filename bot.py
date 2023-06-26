@@ -104,7 +104,7 @@ class BMAS:
             config=uvicorn.Config(
                 app=self.fa_app,
                 port=self.env_vars["PORT"],
-                host="127.0.0.1",
+                host=self.env_vars["IP"],
             )
         )
 
@@ -157,10 +157,10 @@ class BMAS:
             )
         ]
 
-        await context.bot.send_message(
-            chat_id=self.env_vars["TELEGRAM_LOG_ID"],
-            text=f"inline render: {update.effective_user.full_name}: @{update.effective_user.username}\n{query}",
-        )
+        # await context.bot.send_message(
+        #     chat_id=self.env_vars["TELEGRAM_LOG_ID"],
+        #     text=f"inline render! {update.effective_user.full_name}: @{update.effective_user.username}\n{query}",
+        # )
 
         await context.bot.answer_inline_query(update.inline_query.id, results)
 
