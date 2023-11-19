@@ -1,5 +1,6 @@
 from typing import List
 from os import getenv, listdir
+from time import time
 from string import punctuation
 import subprocess
 import asyncio
@@ -155,7 +156,7 @@ class BMAS:
         print(voice_url)
         results = [
             InlineQueryResultVoice(
-                id="BMAS",
+                id="BMAS" + str(int(time())),
                 title=query,
                 voice_url=voice_url,
             )
