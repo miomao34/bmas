@@ -6,7 +6,7 @@ import subprocess
 import asyncio
 from urllib.parse import urlencode
 
-from telegram import InlineQueryResultVoice, Update
+from telegram import InlineQueryResultAudio, Update
 from telegram.ext import (
     ApplicationBuilder,
     Application,
@@ -147,18 +147,19 @@ class BMAS:
         if not query:
             return
 
-        voice_url = (
-            self.env_vars["IP"]
+        audio_url = (
+            "http://"
+            + self.env_vars["IP"]
             + f":{self.env_vars['PORT']}"
             + "/render?"
             + urlencode({"sentence": query})
         )
-        print(voice_url)
+        print(audio_url)
         results = [
-            InlineQueryResultVoice(
+            InlineQueryResultAudio(
                 id="BMAS" + str(int(time())),
                 title=query,
-                voice_url=voice_url,
+                audio_url=audio_url,
             )
         ]
 
