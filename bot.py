@@ -224,7 +224,7 @@ class BMAS:
 
         # ???
         print(result)
-        result_filename = "out.ogg"
+        result_filename = "out.mp3"
         # fmt: off
         command = [
             "ffmpeg",
@@ -242,7 +242,7 @@ class BMAS:
         result_bytes = f.read()
         f.close()
 
-        return Response(result_bytes, media_type="audio/ogg")
+        return Response(result_bytes, media_type="audio/mpeg")
 
 
 # bot = Bot(token=TOKEN)
