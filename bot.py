@@ -224,6 +224,7 @@ class BMAS:
 
         # ???
         print(result)
+        result_filename = "out.ogg"
         # fmt: off
         command = [
             "ffmpeg",
@@ -231,17 +232,17 @@ class BMAS:
             "-v", "error",
             "-i", "concat:" + "|".join(result),
             "-acodec", "copy",
-            "-y", "out.mp3",
+            "-y", result_filename,
         ]
         print(command)
         subprocess.run(command).check_returncode()
         # fmt: on
 
-        f = open("out.mp3", "rb")
+        f = open(result_filename, "rb")
         result_bytes = f.read()
         f.close()
 
-        return Response(result_bytes, media_type="audio/mpeg")
+        return Response(result_bytes, media_type="audio/ogg")
 
 
 # bot = Bot(token=TOKEN)
